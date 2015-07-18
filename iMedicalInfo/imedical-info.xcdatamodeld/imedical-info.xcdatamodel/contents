@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14E46" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Demography" representedClassName="Demography" syncable="YES">
+        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="birthdate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="faxNumber" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phones" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <relationship name="patient" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Patient" inverseName="demography" inverseEntity="Patient" syncable="YES"/>
+    </entity>
+    <entity name="Doctor" representedClassName="Doctor" syncable="YES">
+        <attribute name="businessCard" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="fullName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isActive" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="photo" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="specialists" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <relationship name="patients" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Patient" inverseName="doctors" inverseEntity="Patient" syncable="YES"/>
+    </entity>
+    <entity name="EmergencyContact" representedClassName="EmergencyContact" syncable="YES">
+        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phones" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="relationship" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="HealthCard" representedClassName="HealthCard" syncable="YES">
+        <attribute name="healthInsurance" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="medicationInsurance" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="paymentCard" optional="YES" attributeType="Binary" syncable="YES"/>
+        <relationship name="patient" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Patient" inverseName="healthCards" inverseEntity="Patient" syncable="YES"/>
+    </entity>
+    <entity name="Patient" representedClassName="Patient" syncable="YES">
+        <attribute name="patientName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="photo" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="demography" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Demography" inverseName="patient" inverseEntity="Demography" syncable="YES"/>
+        <relationship name="doctors" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Doctor" inverseName="patients" inverseEntity="Doctor" syncable="YES"/>
+        <relationship name="emergencyContacts" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="EmergencyContact" syncable="YES"/>
+        <relationship name="healthCards" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="HealthCard" inverseName="patient" inverseEntity="HealthCard" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Patient" positionX="-63" positionY="-18" width="128" height="150"/>
+        <element name="Demography" positionX="-54" positionY="54" width="128" height="165"/>
+        <element name="HealthCard" positionX="-36" positionY="90" width="128" height="105"/>
+        <element name="Doctor" positionX="-18" positionY="99" width="128" height="135"/>
+        <element name="EmergencyContact" positionX="0" positionY="108" width="128" height="105"/>
+    </elements>
+</model>
