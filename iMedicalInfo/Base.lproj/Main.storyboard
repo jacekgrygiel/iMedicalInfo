@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -109,7 +109,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="50" sectionHeaderHeight="10" sectionFooterHeight="10" id="WIx-bw-L9W">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddPatientPhotoCellIdentifier" rowHeight="143" id="ZW3-RB-s5V" customClass="AddPatientPhotoCell" customModule="iMedicalInfo" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -118,7 +118,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jG5-KZ-Bhv">
-                                            <rect key="frame" x="229" y="5" width="142" height="134.5"/>
+                                            <rect key="frame" x="229" y="5" width="142" height="135"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="142" id="3cn-mZ-mNe"/>
                                                 <constraint firstAttribute="height" constant="134.5" id="wAY-mR-UMX"/>
@@ -163,7 +163,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3BF-A7-B7b">
                                             <rect key="frame" x="1" y="11" width="565" height="26"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -184,9 +184,9 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Add" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BiO-5c-rcL">
-                                            <rect key="frame" x="1" y="11" width="599" height="30.5"/>
+                                            <rect key="frame" x="1" y="11" width="599" height="31"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -225,7 +225,8 @@
                         </connections>
                     </navigationItem>
                     <connections>
-                        <segue destination="tlB-yJ-InE" kind="show" identifier="showAddListViewController" id="EHD-m6-p7R"/>
+                        <segue destination="tlB-yJ-InE" kind="show" identifier="showAddSimpleRecordViewController" id="EHD-m6-p7R"/>
+                        <segue destination="tF4-Ye-Gbk" kind="show" identifier="showAddPhotoInsuranceViewController" id="5DA-4T-yzD"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Txd-08-8Rw" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -235,7 +236,7 @@
         <!--Add Patient-->
         <scene sceneID="lfP-He-pTf">
             <objects>
-                <tableViewController title="Add Patient" id="tlB-yJ-InE" customClass="AddListViewController" customModule="iMedicalInfo" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Add Patient" id="tlB-yJ-InE" customClass="AddSimpleRecordViewController" customModule="iMedicalInfo" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="toI-9N-opx">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -294,6 +295,65 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zmo-HL-sCd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3075" y="-325"/>
+        </scene>
+        <!--Label-->
+        <scene sceneID="zg2-sP-tD6">
+            <objects>
+                <tableViewController id="tF4-Ye-Gbk" customClass="AddPhotoInsuranceViewController" customModule="iMedicalInfo" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="180" sectionHeaderHeight="10" sectionFooterHeight="10" id="BhS-8Y-vkA">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
+                        <sections>
+                            <tableViewSection headerTitle="Photo Front Cover" id="5Ua-oi-lxx">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="rmy-q3-Tmo">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rmy-q3-Tmo" id="rrm-I0-7fw">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cna-Et-m1c">
+                                                    <rect key="frame" x="100" y="0.0" width="400" height="180"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Photo Back Cover" id="F78-AJ-XmG">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="O20-ZL-fBF">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="O20-ZL-fBF" id="cPY-5p-Ax1">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZgY-re-e8d">
+                                                    <rect key="frame" x="100" y="0.0" width="400" height="180"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="tF4-Ye-Gbk" id="KuO-VX-Olr"/>
+                            <outlet property="delegate" destination="tF4-Ye-Gbk" id="aCb-Jz-kWb"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Label" id="ZZZ-Cn-wee">
+                        <barButtonItem key="backBarButtonItem" title="Cancel" id="obs-c6-6gD">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="backCoverPhotoImage" destination="ZgY-re-e8d" id="V68-yX-Tba"/>
+                        <outlet property="frontPhotoCoverImage" destination="cna-Et-m1c" id="AxE-nz-WhE"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hab-9T-owL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3069" y="397"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="AYT-o9-fKu">

@@ -33,7 +33,7 @@ class PatientColllectionCell:UICollectionViewCell {
 }
 
 
-class GeneralInfoViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class GeneralInfoViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
     
     @IBOutlet weak var collectionView:UICollectionView!
@@ -77,7 +77,6 @@ class GeneralInfoViewController: UIViewController, UICollectionViewDataSource, U
             self.selectedPatient = patient
             NSManagedObjectContext.MR_defaultContext().MR_saveToPersistentStoreAndWait()
 
-
             
             var timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: Selector("showAddPatientAction"), userInfo: nil, repeats: false)
 
@@ -91,57 +90,18 @@ class GeneralInfoViewController: UIViewController, UICollectionViewDataSource, U
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
         if indexPath.row == self.patients()?.count {
-            self.takePhoto(true)
+            
+            PhotoManager.sharedInstance.takePhoto(true, mainController: self, callback: { (image) -> Void in
+                self.createNewPatient(image)
+            })
+            
         } else{
             self.showAddPatientAction(false)
         }
         
     }
     
-    
-    
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
 
-            print("Picker returned successfully")
-            
-            let mediaType:AnyObject? = info[UIImagePickerControllerMediaType]
-            
-            if let type:AnyObject = mediaType{
-                
-                if type is String{
-                    let stringType = type as! String
-                    
-                    if stringType == kUTTypeMovie as String{
-                        let urlOfVideo = info[UIImagePickerControllerMediaURL] as? NSURL
-                        if let url = urlOfVideo{
-                        }
-                    }
-                        
-                    else if stringType == kUTTypeImage as String{
-                    
-                        /* Let's get the metadata. This is only for images. Not videos */
-                        let metadata = info[UIImagePickerControllerMediaMetadata]
-                            as? NSDictionary
-                        if let theMetaData = metadata{
-                            let image = info[UIImagePickerControllerOriginalImage]
-                                as? UIImage
-
-                            self.createNewPatient(image)
-
-                        }
-                    }
-                    
-                }
-            }
-            
-            picker.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-
-        picker.dismissViewControllerAnimated(true, completion: { () -> Void in
-        })
-    }
     
     func showAddPatientAction(){
         self.performSegueWithIdentifier("showAddPatient", sender: true);
@@ -166,55 +126,6 @@ class GeneralInfoViewController: UIViewController, UICollectionViewDataSource, U
             
         }
     }
-    
-    func isCameraAvailable() -> Bool{
-        return UIImagePickerController.isSourceTypeAvailable(.Camera)
-    }
-    
-    func cameraSupportsMedia(mediaType: String,
-        sourceType: UIImagePickerControllerSourceType) -> Bool{
-            
-            let availableMediaTypes = UIImagePickerController.availableMediaTypesForSourceType(sourceType)
-            
-            if let types = availableMediaTypes{
-                for type in types{
-                    if (type as! String) == mediaType{
-                        return true
-                    }
-                }
-            }
-            
-            return false
-    }
-    
-    func doesCameraSupportTakingPhotos() -> Bool{
-        return cameraSupportsMedia(kUTTypeImage as String, sourceType: .Camera)
-    }
-    
-     func takePhoto(animated: Bool) {
-        
-        if isCameraAvailable() && doesCameraSupportTakingPhotos(){
-            
-            controller = UIImagePickerController()
-            
-            if let theController = controller{
-                theController.sourceType = .Camera
-                
-                theController.mediaTypes = [kUTTypeImage as String]
-                
-                theController.allowsEditing = true
-                theController.delegate = self
-                
-                presentViewController(theController, animated: true, completion: nil)
-            }
-            
-        } else {
-            print("Camera is not available")
-        }
-        
-    }
-    
-    
 
 }
 

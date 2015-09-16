@@ -21,3 +21,5 @@ class Patient: NSManagedObject {
     @NSManaged var doctors: NSSet
 
 }
+
+

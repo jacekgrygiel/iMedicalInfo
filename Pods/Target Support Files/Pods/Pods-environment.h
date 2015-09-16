@@ -52,7 +52,7 @@
 #define COCOAPODS_POD_AVAILABLE_MCSwipeTableViewCell
 #define COCOAPODS_VERSION_MAJOR_MCSwipeTableViewCell 2
 #define COCOAPODS_VERSION_MINOR_MCSwipeTableViewCell 1
-#define COCOAPODS_VERSION_PATCH_MCSwipeTableViewCell 2
+#define COCOAPODS_VERSION_PATCH_MCSwipeTableViewCell 4
 
 // MagicalRecord
 #define COCOAPODS_POD_AVAILABLE_MagicalRecord

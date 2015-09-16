@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		45C4FF971B6510730013A4D8 /* AddSimpleRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C4FF961B6510720013A4D8 /* AddSimpleRecordViewController.swift */; };
+		B96AC4851B9F73E10097E136 /* DatePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B96AC4841B9F73E10097E136 /* DatePickerView.xib */; };
+		B96AC4871B9F75080097E136 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96AC4861B9F75080097E136 /* DatePickerView.swift */; };
 		B96C7F001B500D9600C74BCB /* TreatmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96C7EFF1B500D9600C74BCB /* TreatmentViewController.swift */; };
 		B96C7F021B500DAE00C74BCB /* TestResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96C7F011B500DAE00C74BCB /* TestResultsViewController.swift */; };
 		B96C7F051B50125E00C74BCB /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = B96C7F041B50125E00C74BCB /* Podfile */; };
@@ -17,8 +20,9 @@
 		B993D2AF1B5028F0009FBBFC /* HealthCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B993D2AE1B5028F0009FBBFC /* HealthCard.swift */; };
 		B993D2B11B5028F0009FBBFC /* Demography.swift in Sources */ = {isa = PBXBuildFile; fileRef = B993D2B01B5028F0009FBBFC /* Demography.swift */; };
 		B993D2B51B5029B2009FBBFC /* AddPatientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B993D2B41B5029B2009FBBFC /* AddPatientViewController.swift */; };
-		B993D2B71B503771009FBBFC /* AddListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B993D2B61B503771009FBBFC /* AddListViewController.swift */; };
 		B993D2BA1B5055A7009FBBFC /* Medical+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B993D2B91B5055A7009FBBFC /* Medical+UIColor.swift */; };
+		B995A5DB1B7004AB00951ACB /* PhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B995A5DA1B7004AB00951ACB /* PhotoManager.swift */; };
+		B995A5DD1B700BD300951ACB /* AddPhotoInsuranceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B995A5DC1B700BD300951ACB /* AddPhotoInsuranceViewController.swift */; };
 		B9DC24AF1B500CCA009CCCF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DC24AE1B500CCA009CCCF0 /* AppDelegate.swift */; };
 		B9DC24B11B500CCA009CCCF0 /* GeneralInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DC24B01B500CCA009CCCF0 /* GeneralInfoViewController.swift */; };
 		B9DC24B31B500CCA009CCCF0 /* HealthConditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DC24B21B500CCA009CCCF0 /* HealthConditionViewController.swift */; };
@@ -40,8 +44,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		45C4FF961B6510720013A4D8 /* AddSimpleRecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSimpleRecordViewController.swift; sourceTree = "<group>"; };
 		524068BE087C0D5309C8DB29 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BDCE5EE0D1D502BF474E3A3 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		B96AC4841B9F73E10097E136 /* DatePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickerView.xib; sourceTree = "<group>"; };
+		B96AC4861B9F75080097E136 /* DatePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		B96C7EFF1B500D9600C74BCB /* TreatmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreatmentViewController.swift; sourceTree = "<group>"; };
 		B96C7F011B500DAE00C74BCB /* TestResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestResultsViewController.swift; sourceTree = "<group>"; };
 		B96C7F041B50125E00C74BCB /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
@@ -53,8 +60,9 @@
 		B993D2AE1B5028F0009FBBFC /* HealthCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HealthCard.swift; path = Models/HealthCard.swift; sourceTree = "<group>"; };
 		B993D2B01B5028F0009FBBFC /* Demography.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Demography.swift; path = Models/Demography.swift; sourceTree = "<group>"; };
 		B993D2B41B5029B2009FBBFC /* AddPatientViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPatientViewController.swift; sourceTree = "<group>"; };
-		B993D2B61B503771009FBBFC /* AddListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddListViewController.swift; sourceTree = "<group>"; };
 		B993D2B91B5055A7009FBBFC /* Medical+UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Medical+UIColor.swift"; path = "Extensions/Medical+UIColor.swift"; sourceTree = "<group>"; };
+		B995A5DA1B7004AB00951ACB /* PhotoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoManager.swift; sourceTree = "<group>"; };
+		B995A5DC1B700BD300951ACB /* AddPhotoInsuranceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPhotoInsuranceViewController.swift; sourceTree = "<group>"; };
 		B9DC24A91B500CCA009CCCF0 /* iMedicalInfo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iMedicalInfo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9DC24AD1B500CCA009CCCF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B9DC24AE1B500CCA009CCCF0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -163,7 +171,11 @@
 				B96C7EFF1B500D9600C74BCB /* TreatmentViewController.swift */,
 				B993D2951B502286009FBBFC /* iMedicalInfo-Bridging-Header.h */,
 				B993D2B41B5029B2009FBBFC /* AddPatientViewController.swift */,
-				B993D2B61B503771009FBBFC /* AddListViewController.swift */,
+				45C4FF961B6510720013A4D8 /* AddSimpleRecordViewController.swift */,
+				B995A5DA1B7004AB00951ACB /* PhotoManager.swift */,
+				B995A5DC1B700BD300951ACB /* AddPhotoInsuranceViewController.swift */,
+				B96AC4841B9F73E10097E136 /* DatePickerView.xib */,
+				B96AC4861B9F75080097E136 /* DatePickerView.swift */,
 			);
 			path = iMedicalInfo;
 			sourceTree = "<group>";
@@ -244,6 +256,7 @@
 				TargetAttributes = {
 					B9DC24A81B500CCA009CCCF0 = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = 825E6KGWM2;
 					};
 					B9DC24BF1B500CCA009CCCF0 = {
 						CreatedOnToolsVersion = 6.4;
@@ -278,6 +291,7 @@
 				B9DC24B61B500CCA009CCCF0 /* Main.storyboard in Resources */,
 				B9DC24BB1B500CCA009CCCF0 /* LaunchScreen.xib in Resources */,
 				B96C7F051B50125E00C74BCB /* Podfile in Resources */,
+				B96AC4851B9F73E10097E136 /* DatePickerView.xib in Resources */,
 				B9DC24B81B500CCA009CCCF0 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -329,15 +343,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B993D2B71B503771009FBBFC /* AddListViewController.swift in Sources */,
 				B9DC24B31B500CCA009CCCF0 /* HealthConditionViewController.swift in Sources */,
 				B9DC24AF1B500CCA009CCCF0 /* AppDelegate.swift in Sources */,
+				B995A5DB1B7004AB00951ACB /* PhotoManager.swift in Sources */,
 				B993D2AD1B5028F0009FBBFC /* EmergencyContact.swift in Sources */,
 				B993D2AB1B5028F0009FBBFC /* Doctor.swift in Sources */,
 				B96C7F021B500DAE00C74BCB /* TestResultsViewController.swift in Sources */,
 				B993D2AF1B5028F0009FBBFC /* HealthCard.swift in Sources */,
 				B993D2B51B5029B2009FBBFC /* AddPatientViewController.swift in Sources */,
+				45C4FF971B6510730013A4D8 /* AddSimpleRecordViewController.swift in Sources */,
+				B96AC4871B9F75080097E136 /* DatePickerView.swift in Sources */,
 				B9DC24B11B500CCA009CCCF0 /* GeneralInfoViewController.swift in Sources */,
+				B995A5DD1B700BD300951ACB /* AddPhotoInsuranceViewController.swift in Sources */,
 				B993D2BA1B5055A7009FBBFC /* Medical+UIColor.swift in Sources */,
 				B993D2A91B5028F0009FBBFC /* Patient.swift in Sources */,
 				B96C7F001B500D9600C74BCB /* TreatmentViewController.swift in Sources */,
@@ -470,9 +487,12 @@
 			baseConfigurationReference = 6BDCE5EE0D1D502BF474E3A3 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = iMedicalInfo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "f819c41e-c4aa-4b53-8890-3bf617281192";
 				SWIFT_OBJC_BRIDGING_HEADER = "/Users/jacekgrygiel/Desktop/iMedicalInfo/iMedicalInfo/iMedicalInfo-Bridging-Header.h";
 			};
 			name = Debug;
@@ -482,9 +502,12 @@
 			baseConfigurationReference = D04DF1123A9826A1D2DDB0D6 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = iMedicalInfo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "f819c41e-c4aa-4b53-8890-3bf617281192";
 				SWIFT_OBJC_BRIDGING_HEADER = "/Users/jacekgrygiel/Desktop/iMedicalInfo/iMedicalInfo/iMedicalInfo-Bridging-Header.h";
 			};
 			name = Release;

@@ -12,8 +12,9 @@ enum SectionType: String {
     case PhotoProfile = "Profile Photo"
     case Demographics = "Demographics"
     case MyHealthCard = "My Health Card"
-    case EmergencyContacts = "Emergency Contacts"
-    case Doctors = "Doctors"
+    case Contacts = "Contacts"
+//    case EmergencyContacts = "Emergency Contacts"
+//    case Doctors = "Doctors"
 }
 
 enum CellType: String {
@@ -49,6 +50,9 @@ class AddPatientPreviewLabelCell:UITableViewCell{
 class AddPatientViewController: UITableViewController {
 
     var patient:Patient?
+    
+    var birthdate:NSDate = NSDate()
+    
     var mode: AppViewControllerMode = AppViewControllerMode.Edit
     
     @IBAction func cancelAddPatient(){
@@ -63,21 +67,29 @@ class AddPatientViewController: UITableViewController {
     
     @IBAction func confirmAddPatient(){
         
-        self.dismissViewControllerAnimated(true, completion: { () -> Void in
-            
-        })
+        var firstName:String? = (tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 1)) as! AddPatientTextFieldCell).messageTextField?.text
+        var lastName:String? = (tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 1)) as! AddPatientTextFieldCell).messageTextField?.text
+        var dateOfBirth:String? = (tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 2, inSection: 1)) as! AddPatientTextFieldCell).messageTextField?.text
+        var address:String? = (tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 3, inSection: 1)) as! AddPatientTextFieldCell).messageTextField?.text
+
+        if (self.checkFields() == true){
+        
+            self.dismissViewControllerAnimated(true, completion: { () -> Void in
+                
+            })
+
+        }
     }
     
     var demographySection:Array<Array<String>> = [[]]
     var healthCardsSection:Array<Array<String>> = [[]]
-    var emergencyContacts:Array<Array<String>> = [[]]
-    
+    var contactsSection:Array<Array<String>> = [[]]
     
     var photoProfileSection:Array<Array<String>> = [
         ["AddPatientPhotoCellIdentifier", "Photo", CellType.PhotoCell.rawValue]
     ]
     
-    let sections = [SectionType.PhotoProfile, SectionType.Demographics, SectionType.MyHealthCard, SectionType.EmergencyContacts, SectionType.Doctors]
+    let sections = [SectionType.PhotoProfile, SectionType.Demographics, SectionType.MyHealthCard, SectionType.Contacts]
     
     
     override func viewDidLoad() {
@@ -85,36 +97,70 @@ class AddPatientViewController: UITableViewController {
 
         if self.mode == AppViewControllerMode.Edit {
             self.demographySection = [
-            ["AddPatientTextFieldCellIdentifier","First Name", CellType.TextFieldCell.rawValue],
-            ["AddPatientTextFieldCellIdentifier","Last Name", CellType.TextFieldCell.rawValue],
-            ["AddPatientTextFieldCellIdentifier","Date Of Birth", CellType.TextFieldCell.rawValue],
-            ["AddPatientTextFieldCellIdentifier","Address", CellType.TextFieldCell.rawValue],
-            ["AddPatientLabelCellIdentifier","Phones", CellType.LabelCell.rawValue],
-            ["AddPatientLabelCellIdentifier","Fax Numbers", CellType.LabelCell.rawValue],
-            ["AddPatientLabelCellIdentifier","Emails", CellType.LabelCell.rawValue]]
-            self.emergencyContacts = [
-                ["AddPatientTextFieldCellIdentifier","First Name", CellType.TextFieldCell.rawValue],
-                ["AddPatientTextFieldCellIdentifier","Last Name", CellType.TextFieldCell.rawValue],
-                ["AddPatientTextFieldCellIdentifier","Relationship", CellType.TextFieldCell.rawValue],
-                ["AddPatientLabelCellIdentifier","Phones", CellType.LabelCell.rawValue]]
+            ["AddPatientTextFieldCellIdentifier","First Name", CellType.TextFieldCell.rawValue, "", ""],
+            ["AddPatientTextFieldCellIdentifier","Last Name", CellType.TextFieldCell.rawValue, "", ""],
+            ["AddPatientTextFieldCellIdentifier","Date Of Birth", CellType.TextFieldCell.rawValue, "", ""],
+            ["AddPatientTextFieldCellIdentifier","Address", CellType.TextFieldCell.rawValue, "", ""],
+            ["AddPatientLabelCellIdentifier","Phones", CellType.LabelCell.rawValue, "showAddSimpleRecordViewController", RecordType.Phone.rawValue],
+            ["AddPatientLabelCellIdentifier","Fax Numbers", CellType.LabelCell.rawValue, "showAddSimpleRecordViewController", RecordType.Fax.rawValue],
+            ["AddPatientLabelCellIdentifier","Emails", CellType.LabelCell.rawValue, "showAddSimpleRecordViewController", RecordType.Email.rawValue]
+                ]
+            
+            self.healthCardsSection = [
+                ["AddPatientLabelCellIdentifier", "Health Insurance", CellType.LabelCell.rawValue, "showAddPhotoInsuranceViewController"],
+                ["AddPatientLabelCellIdentifier", "Medications Insurance", CellType.LabelCell.rawValue, "showAddPhotoInsuranceViewController"],
+                ["AddPatientLabelCellIdentifier", "Payment Card", CellType.LabelCell.rawValue, "showAddPhotoInsuranceViewController"]]
+            self.contactsSection = [
+                ["AddPatientLabelCellIdentifier","Emergencies", CellType.LabelCell.rawValue],
+                ["AddPatientLabelCellIdentifier","Doctors", CellType.LabelCell.rawValue]]
+            
             
         } else if self.mode == AppViewControllerMode.Preview {
             self.demographySection = [
                 ["AddPatientLabelPreviewCellIdentifier",self.patient!.demography.firstName, CellType.LabelPreviewCell.rawValue],
                 ["AddPatientLabelPreviewCellIdentifier",self.patient!.demography.lastName, CellType.LabelPreviewCell.rawValue],
-                ["AddPatientLabelPreviewCellIdentifier",self.patient!.demography.firstName, CellType.LabelPreviewCell.rawValue],
+                ["AddPatientLabelPreviewCellIdentifier",self.patient!.demography.faxNumber, CellType.LabelPreviewCell.rawValue],
                 ["AddPatientLabelPreviewCellIdentifier",self.patient!.demography.address, CellType.LabelPreviewCell.rawValue],
                 ["AddPatientLabelCellIdentifier","Phones", CellType.LabelCell.rawValue],
                 ["AddPatientLabelCellIdentifier","Fax Numbers", CellType.LabelCell.rawValue],
                 ["AddPatientLabelCellIdentifier","Emails", CellType.LabelCell.rawValue]]
-            self.emergencyContacts = [
-                ["AddPatientLabelPreviewCellIdentifier",self.patient!.emergencyContacts.firstName, CellType.LabelPreviewCell.rawValue],
-                ["AddPatientLabelPreviewCellIdentifier",self.patient!.emergencyContacts.lastName, CellType.LabelPreviewCell.rawValue],
-                ["AddPatientTextFieldCellIdentifier",self.patient!.emergencyContacts.relationship, CellType.TextFieldCell.rawValue],
-                ["AddPatientLabelCellIdentifier","Phones", CellType.LabelCell.rawValue]]
+            self.contactsSection = [
+                ["AddPatientLabelCellIdentifier","Emergencies", CellType.LabelCell.rawValue],
+                ["AddPatientLabelCellIdentifier","Doctors", CellType.LabelCell.rawValue]]
         }
         
         
+    }
+    
+    
+    func checkFields() -> Bool{
+        
+        if (self.patient?.demography.firstName == nil){
+            self.showAlert("Please input first name field")
+            return true
+        }
+        
+        if (self.patient?.demography.lastName == nil){
+            self.showAlert("Please input last name field")
+            return true
+        }
+        
+        if (self.patient?.demography.birthdate == nil){
+            self.showAlert("Please input birthdate number  field")
+            return true
+        }
+        
+        if (self.patient?.demography.address == nil){
+            self.showAlert("Please input address field")
+            return true
+        }
+        
+        return false
+    }
+    
+    func showAlert(message:String){
+        var alert = UIAlertController(title: "Validation Error", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        self.showViewController(alert, sender: self)
     }
 
     override func didReceiveMemoryWarning() {
@@ -141,11 +187,9 @@ class AddPatientViewController: UITableViewController {
         case .Demographics:
             return self.demographySection.count
         case .MyHealthCard:
-            return self.demographySection.count
-        case .EmergencyContacts:
-            return self.emergencyContacts.count
-        case .Doctors:
-            return self.demographySection.count
+            return self.healthCardsSection.count
+        case .Contacts:
+            return self.contactsSection.count
         default:
             break
             
@@ -166,11 +210,9 @@ class AddPatientViewController: UITableViewController {
         case .Demographics:
             currentData = self.demographySection
         case .MyHealthCard:
-            currentData = self.demographySection
-        case .EmergencyContacts:
-            currentData = self.emergencyContacts
-        case .Doctors:
-            currentData = self.demographySection
+            currentData = self.healthCardsSection
+        case .Contacts:
+            currentData = self.contactsSection
         default:
             break
             
@@ -184,6 +226,23 @@ class AddPatientViewController: UITableViewController {
         if identifier == CellType.TextFieldCell.rawValue {
             let cell:AddPatientTextFieldCell! = tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath) as! AddPatientTextFieldCell
             cell.messageTextField?.placeholder = currentIndexData[1]
+            
+            if (indexPath == NSIndexPath(forRow: 2, inSection: 1)){
+                
+                cell.messageTextField!.text = DatePickerView.dateToString(self.birthdate)
+                
+                var myPicker:DatePickerView = NSBundle.mainBundle().loadNibNamed("DatePickerView", owner: self, options: nil).first as! DatePickerView
+                
+                cell.messageTextField?.inputView = myPicker
+                
+                myPicker.callbackDatePickerView = {
+                    self.updateTextField(myPicker.datePicker)
+                    cell.messageTextField?.resignFirstResponder()
+                    cell.messageTextField?.text = DatePickerView.dateToString(myPicker.datePicker.date)
+                }
+            }
+            
+            
             return cell
         }else if identifier == CellType.LabelCell.rawValue{
             let cell:AddPatientLabelCell! = tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath) as! AddPatientLabelCell
@@ -203,6 +262,11 @@ class AddPatientViewController: UITableViewController {
         let cell:UITableViewCell! = tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath) as! UITableViewCell
         return cell
     }
+    
+    func updateTextField(sender:UIDatePicker){
+        self.birthdate = sender.date
+        
+    }
 
 
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -220,21 +284,19 @@ class AddPatientViewController: UITableViewController {
         case .Demographics:
             currentData = self.demographySection
         case .MyHealthCard:
-            currentData = self.demographySection
-        case .EmergencyContacts:
-            currentData = self.demographySection
-        case .Doctors:
-            currentData = self.demographySection
+            currentData = self.healthCardsSection
+        case .Contacts:
+            currentData = self.contactsSection
         default:
             break
             
         }
         var currentIndexData:Array! = currentData!.objectAtIndex(indexPath.row) as! Array<String>
 
-        if currentIndexData[2] == CellType.LabelCell.rawValue {
-            
-            self.performSegueWithIdentifier("showAddListViewController", sender: currentIndexData)
-            
+        var segueMessage:String = currentIndexData[3]
+        
+        if !segueMessage.isEmpty {
+            self.performSegueWithIdentifier(segueMessage, sender: currentIndexData)
         }
         
     }
@@ -242,14 +304,22 @@ class AddPatientViewController: UITableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        if segue.identifier == "showAddListViewController" {
+        if segue.identifier == "showAddSimpleRecordViewController" {
             
             var currentIndexData:Array<String>! = sender as! Array<String>
-            var controller:AddListViewController = segue.destinationViewController as! AddListViewController
+            var controller:AddSimpleRecordViewController = segue.destinationViewController as! AddSimpleRecordViewController
             controller.title = currentIndexData[1]
+            controller.type = RecordType(rawValue: currentIndexData[4])!
             
         }
         
+        if segue.identifier == "showAddPhotoInsuranceViewController" {
+            
+            var currentIndexData:Array<String>! = sender as! Array<String>
+            var controller:AddPhotoInsuranceViewController = segue.destinationViewController as! AddPhotoInsuranceViewController
+            controller.title = currentIndexData[1]
+            
+        }
     }
     
     
@@ -264,11 +334,9 @@ class AddPatientViewController: UITableViewController {
         case .Demographics:
             currentData = self.demographySection
         case .MyHealthCard:
-            currentData = self.demographySection
-        case .EmergencyContacts:
-            currentData = self.demographySection
-        case .Doctors:
-            currentData = self.demographySection
+            currentData = self.healthCardsSection
+        case .Contacts:
+            currentData = self.contactsSection
         default:
             break
             
@@ -291,49 +359,5 @@ class AddPatientViewController: UITableViewController {
         return 50.0
     
     }
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

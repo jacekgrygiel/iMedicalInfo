@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="DatePickerView" customModule="iMedicalInfo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="zXe-i5-VIs">
+                    <rect key="frame" x="0.0" y="44" width="600" height="556"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="216" id="05Y-N7-1eu"/>
+                    </constraints>
+                    <date key="date" timeIntervalSinceReferenceDate="463434730.29674399">
+                        <!--2015-09-08 19:52:10 +0000-->
+                    </date>
+                    <date key="minimumDate" timeIntervalSinceReferenceDate="-978267600">
+                        <!--1970-01-01 11:00:00 +0000-->
+                    </date>
+                    <date key="maximumDate" timeIntervalSinceReferenceDate="1167562800">
+                        <!--2037-12-31 11:00:00 +0000-->
+                    </date>
+                </datePicker>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pWB-U2-Mc9">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                    <items>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="XD7-PU-s3W"/>
+                        <barButtonItem title="Done" id="Zgm-9r-iKV">
+                            <connections>
+                                <action selector="doneAction:" destination="iN0-l3-epB" id="XBS-SX-Ti7"/>
+                            </connections>
+                        </barButtonItem>
+                    </items>
+                </toolbar>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="pWB-U2-Mc9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="GC0-fK-McE"/>
+                <constraint firstAttribute="trailing" secondItem="pWB-U2-Mc9" secondAttribute="trailing" id="GPw-p6-ejB"/>
+                <constraint firstItem="zXe-i5-VIs" firstAttribute="top" secondItem="pWB-U2-Mc9" secondAttribute="bottom" id="HrB-MB-uML"/>
+                <constraint firstItem="zXe-i5-VIs" firstAttribute="trailing" secondItem="pWB-U2-Mc9" secondAttribute="trailing" id="ahv-C3-XaZ"/>
+                <constraint firstItem="pWB-U2-Mc9" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="bRk-LZ-s8V"/>
+                <constraint firstItem="zXe-i5-VIs" firstAttribute="top" secondItem="pWB-U2-Mc9" secondAttribute="bottom" id="keb-HQ-5dd"/>
+                <constraint firstItem="zXe-i5-VIs" firstAttribute="leading" secondItem="pWB-U2-Mc9" secondAttribute="leading" id="rw5-Dh-ZZP"/>
+            </constraints>
+            <connections>
+                <outlet property="datePicker" destination="zXe-i5-VIs" id="vTC-F4-PoH"/>
+            </connections>
+        </view>
+    </objects>
+</document>
